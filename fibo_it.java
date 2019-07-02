@@ -8,13 +8,13 @@ public class fibo_it {
    Scanner sc = new Scanner(System.in);
    int length = sc.nextInt();
    count++;
-   if(length==1){output=1; count++;}
+   if(length == 1 ){ ;output=0; count++;}
    count+=2;
-   for(int i = 2 ; i <= length ; i++ ,count+=2 );
+   for(int i = 2 ; i <= length ; i++  , count+=2)
    {
        output = first + second;   count++;
-       first = second;             count++;
-       second = output;             count++;
+       first = second;            count++;
+       second = output;           count++;
    }
    System.out.println(output);  
       System.out.println(count);
