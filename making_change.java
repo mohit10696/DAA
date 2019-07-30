@@ -1,24 +1,41 @@
 import java.util.Scanner;
-public class make_change {
+class product{
+    public
+    int weight;
+    int value;
+    float ratio ;
+    public void assratio()
+    {
+        ratio = (float)this.value/this.weight;
+    }
+}
+public class knapsack {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int c[] = {100,25,10,5,1};
-        int sol[] = new int[50];
-        int sum = 0;
-        int j = 0;
-        while(sum!=n)
+        System.out.println("Enter Size of product");
+        int l = sc.nextInt();
+        product x[] = new product[l];
+        System.out.println("Enter weight & value");
+        for(int i = 0 ; i < x.length ; i++)
         {
-            int x=0,i=0;
-            while(n<sum+c[i])i++;
-            sum = sum + c[i];
-            sol[j] = c[i];
-            j++;
+            x[i] = new product();
+            x[i].weight = sc.nextInt();
+            x[i].value = sc.nextInt();
+            x[i].assratio();
+            System.out.println("");
         }
-        for(int x :  sol)
-                {if(x==0)break;
-                    System.out.println(" "+x);
-                    
-                }
+        for (int i = 0; i < l-1; i++)
+		for (int j = 0; j < l-i-1; j++)
+			if (x[j].ratio > x[j+1].ratio)
+			{
+					// swap temp and arr[i]
+                                        product temp = new product();
+					temp = x[j];
+					x[j] = x[j+1];
+					x[j+1] = temp;
+			}
+        for(product m : x ){
+            System.out.println(m.ratio);
+        }
     }
 }
