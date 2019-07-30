@@ -1,12 +1,12 @@
 import java.util.Scanner;
 class product{
     public
-    int weight;
-    int value;
+    float weight;
+    float value;
     float ratio ;
     public void assratio()
     {
-        ratio = (float)this.value/this.weight;
+        ratio = this.value/this.weight;
     }
 }
 public class knapsack {
@@ -34,8 +34,17 @@ public class knapsack {
 					x[j] = x[j+1];
 					x[j+1] = temp;
 			}
-        for(product m : x ){
-            System.out.println(m.ratio);
+        float W = 10 , weight = 0 , i = 0 ;
+        float sol[] = new float[l];
+        while(i<= l && weight < W){
+            if(weight + x[i].weight <= W) sol[i] =1;
+            else sol[i] = (W-weight)/x[i].weight;
+            weight = weight + sol[i]*x[i].weight;
+               i++;
+        }
+        for(int x : sol)
+        {
+            System.out.print(x+" ");
         }
     }
 }
